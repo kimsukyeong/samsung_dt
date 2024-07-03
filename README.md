@@ -1,1 +1,1 @@
-This document is aobut Introducing myself
+This document is about Introducing myself
