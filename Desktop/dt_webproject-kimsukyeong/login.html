@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 페이지</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f2f5;
+      }
+      .box {
+        background-color: #dde4ff;
+        width: 400px;
+        height: 600px;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .box h2 {
+        margin-bottom: 30px;
+        font-size: 24px;
+        color: #333;
+      }
+      .input-box {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .input-box input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      button {
+        background-color: #0e0342;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0b022a;
+      }
+      .box img {
+        max-width: 100px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="main">
+      <h2>Login</h2>
+      <form action="/login" method="POST">
+        <div class="input-box">
+          <input type="text" name="username" placeholder="ID" required />
+        </div>
+        <div class="input-box">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit" id="login-button">로그인</button>
+        <button id="register-button" onclick="location.href='register.html';">
+          회원가입
+        </button>
+      </form>
+      <img src="/img/sam2.png" alt="sam2" />
+    </div>
+  </body>
+</html>

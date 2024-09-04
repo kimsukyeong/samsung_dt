@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공정현황</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #cee3f6;
+      }
+
+      #header {
+        background-color: #cee3f6;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        gap: 10px; /* 간격 조정 */
+      }
+
+      #header img {
+        height: 80px;
+        margin-left: 0px;
+      }
+      .hbutton {
+        margin-left: 20px;
+        background: none;
+        border: none;
+        color: black;
+        font-size: 18px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      #header button:hover {
+        text-decoration: underline;
+      }
+
+      #login-button {
+        background: transparent;
+        background-color: #0e0342;
+        color: white;
+        padding: 5px 20px;
+        border-radius: 20px;
+        border: 3px solid black;
+        box-sizing: border-box;
+        margin-left: 30px;
+      }
+
+      #main {
+        padding: 60px;
+      }
+
+      .title {
+        color: #0e0342;
+        font-size: 60px;
+        font-weight: bold;
+      }
+      .img1 {
+        margin-top: 100px;
+        margin-left: 60px;
+      }
+      .img2 {
+        margin-top: 100px;
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <img src="/img/samsung.png" alt="Logo" id="img1" />
+      <div class="title">SHI Process Condition</div>
+      <div>
+        <button class="hbutton" onclick="navigate('first.html')">
+          개정도 현황
+        </button>
+        <button class="hbutton" onclick="navigate('second.html')">
+          설계 현황
+        </button>
+        <button class="hbutton" onclick="navigate('third.html')">
+          생산설계
+        </button>
+        <button class="hbutton" onclick="navigate('fourth.html')">
+          용접 현황
+        </button>
+        <button id="login-button" onclick="location.href='login.html';">
+          로그인
+        </button>
+      </div>
+    </div>
+
+    <div class="box" id="main">
+      <img src="/img/ship.jpg" id="img2" />
+    </div>
+
+    <script>
+      var isLoggedIn = false;
+
+      // 서버에서 로그인 상태 확인
+      fetch("/is-logged-in")
+        .then((response) => response.json())
+        .then((data) => {
+          isLoggedIn = data.loggedIn; // 로그인 상태 저장
+          // 로그인 상태에 따라 버튼 텍스트 변경
+          if (isLoggedIn) {
+            document.getElementById("login-button").textContent = "로그아웃";
+            document
+              .getElementById("login-button")
+              .setAttribute("onclick", "location.href='/logout';");
+
+            // 로그인 후 처음 메인 페이지로 왔다면 환영 메시지 표시
+            alert("환영합니다!");
+          }
+        });
+
+      function navigate(url) {
+        if (!isLoggedIn) {
+          alert("로그인 해주세요.");
+        } else {
+          alert("환영합니다!"); // 로그인된 경우 환영 메시지 표시
+          location.href = url;
+        }
+      }
+    </script>
+  </body>
+</html>
